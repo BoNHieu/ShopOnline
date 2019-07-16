@@ -1,0 +1,96 @@
+﻿@model OnlineShop.Models.Supplier
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div class="card">
+    <div class="body">
+        <form asp-action="Delete" class="form-horizontal">
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Name" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Phone"></label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Phone" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Email"></label>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-3">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Email" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Address"></label>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-3">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Address" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>   <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Description"></label>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-3">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Description" class="form-control" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="ContractDate" class="card-inside-title"></label>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group date" id="bs_datepicker_component_container">
+                        <div class="form-line">
+                            <input asp-for="ContractDate" type="text" class="form-control" readonly>
+                        </div>
+                        <span class="input-group-addon">
+                            <i class="material-icons">date_range</i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                    <input type="submit" value="Delete" class="btn btn-success" />
+                    <br /><br />
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

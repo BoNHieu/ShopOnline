@@ -1,0 +1,106 @@
+﻿@model OnlineShop.Models.Supplier
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<div class="card">
+    <div class="body">
+        <form asp-action="Edit" class="form-horizontal">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Name" class="form-control" placeholder="Tên nhà cung cấp">
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Phone"></label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Phone" class="form-control" placeholder="Số điện thoại">
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Email"></label>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-3">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Email" class="form-control" placeholder="Email">
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Address"></label>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-3">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Address" class="form-control" placeholder="Địa chỉ">
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>   <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Description"></label>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-3">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Description" class="form-control" placeholder="Mô tả">
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="ContractDate" class="card-inside-title"></label>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group date" id="bs_datepicker_component_container">
+                        <div class="form-line">
+                            <input asp-for="ContractDate" type="text" class="form-control" placeholder="Please choose a date...">
+                        </div>
+                        <span class="input-group-addon">
+                            <i class="material-icons">date_range</i>
+                        </span>
+                    </div>
+                </div>
+                <span asp-validation-for="ContractDate" class="text-danger"></span>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                    <input type="submit" value="Edit" class="btn btn-success" />
+                    <br /><br />
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
