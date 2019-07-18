@@ -39,65 +39,94 @@
                     </a>
                 </li>
                 <li>
+                    <a href="javascript:void(0);">
+                        <i class="material-icons">input</i>
+                        <span>Nhập kho</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:void(0);">
+                        <i class="material-icons">shopping_cart</i>
+                        <span>Đơn hàng</span>
+                    </a>
+                </li>
+                <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">home</i>
-                        <span>DANH MỤC</span>
+                        <i class="material-icons">subtitles</i>
+                        <span>QUẢN LÝ SẢN PHẨM</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a asp-area="Admin" asp-controller="Products" asp-action="Index">Products</a>
+                            <a asp-area="Admin" asp-controller="Products" asp-action="Index">
+                                <i class="material-icons">menu</i>
+                                <span>Danh sách sản phẩm</span>
+                            </a>
                         </li>
                         <li>
-                            <a asp-area="Admin" asp-controller="Categories" asp-action="Index">Categories</a>
-                        </li>
-                        <li>
-                            <a asp-area="Admin" asp-controller="Suppliers" asp-action="Index">Suppliers</a>
+                            <a asp-area="Admin" asp-controller="Products" asp-action="Create">
+                                <i class="material-icons">add</i>
+                                <span>Thêm sản phẩm</span>
+                            </a>
                         </li>
                     </ul>
                 </li>
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle">
-                        <i class="material-icons">widgets</i>
-                        <span>Widgets</span>
+                        <i class="material-icons">menu</i>
+                        <span>QUẢN LÝ DANH MỤC</span>
                     </a>
                     <ul class="ml-menu">
                         <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <span>Cards</span>
+                            <a asp-area="Admin" asp-controller="Categories" asp-action="Index">
+                                <i class="material-icons">menu</i>
+                                <span>Danh sách danh mục</span>
                             </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="../../pages/widgets/cards/basic.html">Basic</a>
-                                </li>
-                                <li>
-                                    <a href="../../pages/widgets/cards/colored.html">Colored</a>
-                                </li>
-                                <li>
-                                    <a href="../../pages/widgets/cards/no-header.html">No Header</a>
-                                </li>
-                            </ul>
                         </li>
                         <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <span>Infobox</span>
+                            <a asp-area="Admin" asp-controller="Categories" asp-action="Create">
+                                <i class="material-icons">add</i>
+                                <span>Thêm danh mục</span>
                             </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="../../pages/widgets/infobox/infobox-1.html">Infobox-1</a>
-                                </li>
-                                <li>
-                                    <a href="../../pages/widgets/infobox/infobox-2.html">Infobox-2</a>
-                                </li>
-                                <li>
-                                    <a href="../../pages/widgets/infobox/infobox-3.html">Infobox-3</a>
-                                </li>
-                                <li>
-                                    <a href="../../pages/widgets/infobox/infobox-4.html">Infobox-4</a>
-                                </li>
-                                <li>
-                                    <a href="../../pages/widgets/infobox/infobox-5.html">Infobox-5</a>
-                                </li>
-                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">local_shipping</i>
+                        <span>QUẢN LÝ NHÀ CUNG CẤP</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a asp-area="Admin" asp-controller="Suppliers" asp-action="Index">
+                                <i class="material-icons">menu</i>
+                                <span>Danh sách nhà cung cấp</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="Admin" asp-controller="Suppliers" asp-action="Create">
+                                <i class="material-icons">add</i>
+                                <span>Thêm nhà cung cấp</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:void(0);" class="menu-toggle">
+                        <i class="material-icons">people</i>
+                        <span>QUẢN LÝ NGƯỜI DÙNG</span>
+                    </a>
+                    <ul class="ml-menu">
+                        <li>
+                            <a asp-area="Manage" asp-controller="ManageUsers" asp-action="Index">
+                                <i class="material-icons">menu</i>
+                                <span>Danh sách người dùng</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a asp-area="Manage" asp-controller="ManageUsers" asp-action="Create">
+                                <i class="material-icons">add</i>
+                                <span>Thêm người dùng</span>
+                            </a>
                         </li>
                     </ul>
                 </li>
@@ -107,10 +136,10 @@
         <!-- Footer -->
         <div class="legal">
             <div class="copyright">
-                &copy; 2016 - 2017 <a href="javascript:void(0);">AdminBSB - Material Design</a>.
+                &copy; 2018 - 2019 <a href="javascript:void(0);">Hiếu BoN</a>
             </div>
             <div class="version">
-                <b>Version: </b> 1.0.5
+                <b>Shop Online</b>
             </div>
         </div>
         <!-- #Footer -->

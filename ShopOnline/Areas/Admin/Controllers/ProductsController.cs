@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using OnlineShop.Models;
 using ShopOnline.Data;
 
-namespace ShopOnline.Areas.Admin.Controllers
+namespace ShopOnline.Areas.Manage.Controllers
 {
     [Area("Admin")]
     public class ProductsController : Controller

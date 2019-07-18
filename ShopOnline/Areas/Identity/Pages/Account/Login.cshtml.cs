@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using ShopOnline.Models;
 
 namespace ShopOnline.Areas.Identity.Pages.Account
 {
@@ -37,7 +38,7 @@ namespace ShopOnline.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            [EmailAddress]
+            
             public string Email { get; set; }
 
             [Required]

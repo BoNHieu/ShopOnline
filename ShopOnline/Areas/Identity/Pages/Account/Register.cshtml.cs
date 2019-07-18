@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using ShopOnline.Models;
 
 namespace ShopOnline.Areas.Identity.Pages.Account
 {
@@ -40,9 +41,26 @@ namespace ShopOnline.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
+            [Display(Name = "Tên hiển thị")]
+            public string FullName { get; set; }
+
+            [Required]
+            [Display(Name = "Tên đăng nhập")]
+            public string UserName { get; set; }
+
+            [Required]
             [EmailAddress]
             [Display(Name = "Email")]
             public string Email { get; set; }
+
+            [Required]
+            [Phone]
+            [Display(Name = "Số điện thoại")]
+            public string Phone { get; set; }
+
+            [Required]
+            [Display(Name = "Địa chỉ")]
+            public string Address { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
@@ -66,8 +84,9 @@ namespace ShopOnline.Areas.Identity.Pages.Account
             returnUrl = returnUrl ?? Url.Content("~/");
             if (ModelState.IsValid)
             {
-                var user = new IdentityUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUsers { Name = Input.FullName, UserName = Input.UserName, Email = Input.Email,PhoneNumber = Input.Phone,Address = Input.Address };
                 var result = await _userManager.CreateAsync(user, Input.Password);
+                await _userManager.AddToRoleAsync(user, "User");
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User created a new account with password.");

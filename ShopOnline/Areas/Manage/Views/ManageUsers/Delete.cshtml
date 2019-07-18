@@ -1,0 +1,81 @@
+﻿@model ShopOnline.Models.ApplicationUsers
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete this?</h2>
+
+<div class="card">
+    <div class="body">
+        <form method="post" class="form-horizontal">
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label for="email_address_2">Họ Và Tên</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <label asp-for="Name">@Model.Name</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label for="username">UserName</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <label asp-for="UserName">@Model.UserName</label>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label for="email">Email</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <label asp-for="Email">@Model.Email</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label for="phone">Số Điện Thoại</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <label asp-for="PhoneNumber">@Model.PhoneNumber</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label for="address">Địa Chỉ</label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <label asp-for="Address">@Model.Address</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                    <button type="submit" class="btn btn-primary m-t-15 waves-effect">Delete</button>
+                    <br /><br />
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

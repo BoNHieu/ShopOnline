@@ -5,27 +5,28 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using OnlineShop.Models;
 using ShopOnline.Data;
+using ShopOnline.Models;
 
-namespace ShopOnline.Areas.Manage
+namespace ShopOnline.Areas.Manage.Controllers
 {
-    [Area("Admin")]
-    public class SuppliersController : Controller
+    [Area("Manage")]
+    public class ManageRolesController : Controller
     {
         private readonly ApplicationDbContext _context;
-        public SuppliersController(ApplicationDbContext context)
+
+        public ManageRolesController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Admin/Suppliers
+        // GET: Manage/ManageRoles
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Suppliers.ToListAsync());
+            return View(await _context.ApplicationRoles.ToListAsync());
         }
 
-        // GET: Admin/Suppliers/Details/5
+        // GET: Manage/ManageRoles/Details/5
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -33,39 +34,39 @@ namespace ShopOnline.Areas.Manage
                 return NotFound();
             }
 
-            var supplier = await _context.Suppliers
+            var applicationRoles = await _context.ApplicationRoles
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (supplier == null)
+            if (applicationRoles == null)
             {
                 return NotFound();
             }
 
-            return View(supplier);
+            return View(applicationRoles);
         }
 
-        // GET: Admin/Suppliers/Create
+        // GET: Manage/ManageRoles/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Admin/Suppliers/Create
+        // POST: Manage/ManageRoles/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Phone,Email,Address,Description,ContractDate")] Supplier supplier)
+        public async Task<IActionResult> Create([Bind("Id,Name,NormalizedName,ConcurrencyStamp")] ApplicationRoles applicationRoles)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(supplier);
+                _context.Add(applicationRoles);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(supplier);
+            return View(applicationRoles);
         }
 
-        // GET: Admin/Suppliers/Edit/5
+        // GET: Manage/ManageRoles/Edit/5
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -73,22 +74,22 @@ namespace ShopOnline.Areas.Manage
                 return NotFound();
             }
 
-            var supplier = await _context.Suppliers.FindAsync(id);
-            if (supplier == null)
+            var applicationRoles = await _context.ApplicationRoles.FindAsync(id);
+            if (applicationRoles == null)
             {
                 return NotFound();
             }
-            return View(supplier);
+            return View(applicationRoles);
         }
 
-        // POST: Admin/Suppliers/Edit/5
+        // POST: Manage/ManageRoles/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,Phone,Email,Address,Description,ContractDate")] Supplier supplier)
+        public async Task<IActionResult> Edit(string id, [Bind("Id,Name,NormalizedName,ConcurrencyStamp")] ApplicationRoles applicationRoles)
         {
-            if (id != supplier.Id)
+            if (id != applicationRoles.Id)
             {
                 return NotFound();
             }
@@ -97,12 +98,12 @@ namespace ShopOnline.Areas.Manage
             {
                 try
                 {
-                    _context.Update(supplier);
+                    _context.Update(applicationRoles);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!SupplierExists(supplier.Id))
+                    if (!ApplicationRolesExists(applicationRoles.Id))
                     {
                         return NotFound();
                     }
@@ -113,10 +114,10 @@ namespace ShopOnline.Areas.Manage
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(supplier);
+            return View(applicationRoles);
         }
 
-        // GET: Admin/Suppliers/Delete/5
+        // GET: Manage/ManageRoles/Delete/5
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -124,30 +125,30 @@ namespace ShopOnline.Areas.Manage
                 return NotFound();
             }
 
-            var supplier = await _context.Suppliers
+            var applicationRoles = await _context.ApplicationRoles
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (supplier == null)
+            if (applicationRoles == null)
             {
                 return NotFound();
             }
 
-            return View(supplier);
+            return View(applicationRoles);
         }
 
-        // POST: Admin/Suppliers/Delete/5
+        // POST: Manage/ManageRoles/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var supplier = await _context.Suppliers.FindAsync(id);
-            _context.Suppliers.Remove(supplier);
+            var applicationRoles = await _context.ApplicationRoles.FindAsync(id);
+            _context.ApplicationRoles.Remove(applicationRoles);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool SupplierExists(string id)
+        private bool ApplicationRolesExists(string id)
         {
-            return _context.Suppliers.Any(e => e.Id == id);
+            return _context.ApplicationRoles.Any(e => e.Id == id);
         }
     }
 }
