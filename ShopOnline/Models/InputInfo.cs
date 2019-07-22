@@ -11,6 +11,7 @@ namespace OnlineShop.Models
     {
         public string Id { get; set; }
 
+        [Display(Name ="Tên người nhập")]
         public string InputId { get; set; }
 
         [ForeignKey("InputId")]

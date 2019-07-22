@@ -11,17 +11,44 @@ $('#bs_datepicker_range_container').datepicker({
     autoclose: true,
     container: '#bs_datepicker_range_container'
 });
+
 $(function () {
-    $('.js-basic-example').dataTable({
-        responsive: true
+    //Textarea auto growth
+    autosize($('textarea.auto-growth'));
+
+    //Datetimepicker plugin
+    $('.datetimepicker').bootstrapMaterialDatePicker({
+        format: 'dddd DD MMMM YYYY - HH:mm',
+        clearButton: true,
+        weekStart: 1
     });
 
-    //Exportable table
-    $('.js-exportable').dataTable({
-        dom: 'Bfrtip',
-        responsive: true,
-        buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
-        ]
+    $('.datepicker').bootstrapMaterialDatePicker({
+        format: 'dddd DD MMMM YYYY',
+        clearButton: true,
+        weekStart: 1,
+        time: false
+    });
+
+    $('.timepicker').bootstrapMaterialDatePicker({
+        format: 'HH:mm',
+        clearButton: true,
+        date: false
+    });
+
+    //Bootstrap datepicker plugin
+    $('#bs_datepicker_container input').datepicker({
+        autoclose: true,
+        container: '#bs_datepicker_container'
+    });
+
+    $('#bs_datepicker_component_container').datepicker({
+        autoclose: true,
+        container: '#bs_datepicker_component_container'
+    });
+    //
+    $('#bs_datepicker_range_container').datepicker({
+        autoclose: true,
+        container: '#bs_datepicker_range_container'
     });
 });

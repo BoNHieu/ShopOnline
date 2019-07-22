@@ -1,0 +1,97 @@
+﻿@model OnlineShop.Models.InputInfo
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<div class="card">
+    <div class="body">
+        <form asp-action="Edit" class="form-horizontal">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="ProductId"></label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <select asp-for="ProductId" class="form-control" asp-items="@ViewBag.ProductId"></select>
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="ProductId" class="text-danger"></span>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="SupplierId"></label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <select asp-for="SupplierId" class="form-control" asp-items="@ViewBag.SupplierId"></select>
+
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="SupplierId" class="text-danger"></span>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Count"></label>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Count" class="form-control" placeholder="Nhập số lượng">
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="Count" class="text-danger"></span>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="Inputprice"></label>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-3">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="Inputprice" class="form-control" placeholder="Giá Nhập">
+
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="Inputprice" class="text-danger"></span>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                    <label asp-for="OutputPrice"></label>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-4 col-xs-3">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input type="text" asp-for="OutputPrice" class="form-control" placeholder="Giá Xuất">
+
+                        </div>
+                    </div>
+                </div>
+                <span asp-validation-for="OutputPrice" class="text-danger"></span>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                    <input type="hidden" name="InputId" asp-for="InputId" />
+                    <input type="submit" value="Edit" class="btn btn-success" />
+                    <br /><br />
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

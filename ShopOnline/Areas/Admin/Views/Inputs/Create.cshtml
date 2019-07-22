@@ -1,0 +1,39 @@
+﻿@model OnlineShop.Models.Input
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Areas/Admin/Views/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<div class="card">
+    <div class="body">
+        <form method="post" asp-action="Create" class="form-horizontal">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="row clearfix">
+                <div class="col-sm-2">
+                    <label asp-for="DateInput" class="control-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <div class="form-line">
+                            <input asp-for="DateInput" type="text" class="datepicker form-control" placeholder="Please choose a date...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row clearfix">
+                <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                    <input type="submit" value="Create" class="btn btn-success"/>
+                    <br /><br />
+                    <a asp-action="Index">Back to List</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

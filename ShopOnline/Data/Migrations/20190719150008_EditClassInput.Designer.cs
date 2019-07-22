@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using ShopOnline.Data;
 
 namespace ShopOnline.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190719150008_EditClassInput")]
+    partial class EditClassInput
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,11 +236,13 @@ namespace ShopOnline.Data.Migrations
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<string>("ApplicationUsersId");
+
                     b.Property<DateTime>("DateInput");
 
-                    b.Property<string>("Name");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("ApplicationUsersId");
 
                     b.ToTable("Inputs");
                 });
@@ -437,6 +441,13 @@ namespace ShopOnline.Data.Migrations
                     b.HasOne("OnlineShop.Models.Product")
                         .WithMany("Categories")
                         .HasForeignKey("ProductId");
+                });
+
+            modelBuilder.Entity("OnlineShop.Models.Input", b =>
+                {
+                    b.HasOne("ShopOnline.Models.ApplicationUsers", "User")
+                        .WithMany()
+                        .HasForeignKey("ApplicationUsersId");
                 });
 
             modelBuilder.Entity("OnlineShop.Models.InputInfo", b =>

@@ -7,8 +7,9 @@ $(function () {
     $('.js-exportable').DataTable({
         dom: 'Bfrtip',
         responsive: true,
+        "pageLength":3,
         buttons: [
-            'copy', 'csv', 'excel', 'pdf', 'print'
+            'excel', 'pdf', 'print'
         ]
     });
 });

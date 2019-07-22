@@ -1,0 +1,80 @@
+﻿@model ShopOnline.Models.ViewModel.InputViewModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Areas/Admin/Views/_Layout.cshtml";
+}
+
+<h2>@Model.Input.Name</h2>
+<input asp-for="Input.DateInput" type="text" class="form-control text-info" readonly>
+
+<div class="col-lg-6 col-md-12" style="font-size:10px;">
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+                <div class="header">
+                    <h2>
+                        Danh sách nhập kho
+                    </h2>
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover dataTable js-exportable">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.Raw("Tên sản phẩm")
+                                    </th>
+                                    <th>
+                                        @Html.Raw("Nhà cung cấp")
+                                    </th>
+                                    <th>
+                                        @Html.Raw("Số lượng")
+                                    </th>
+                                    <th>
+                                        @Html.Raw("Giá nhập")
+                                    </th>
+                                    <th>
+                                        @Html.Raw("Gía xuất")
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.inputInfos)
+                                {
+                                    <tr class="table-info">
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Product.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Supplier.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Count)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Inputprice)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.OutputPrice)
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                <tr class="table-info">
+                                    <th>
+                                        @Html.Raw("Tổng tiền nhập")
+                                    </th>
+                                    <th>
+                                        500.000
+                                    </th>
+                                </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

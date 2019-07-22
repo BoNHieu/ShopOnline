@@ -18,11 +18,13 @@ namespace ShopOnline.Areas.Identity.Pages.Account
     {
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly ILogger<LoginModel> _logger;
+        private readonly UserManager<IdentityUser> _userManager;
 
-        public LoginModel(SignInManager<IdentityUser> signInManager, ILogger<LoginModel> logger)
+        public LoginModel(SignInManager<IdentityUser> signInManager,UserManager<IdentityUser> userManager ,ILogger<LoginModel> logger)
         {
             _signInManager = signInManager;
             _logger = logger;
+            _userManager = userManager;
         }
 
         [BindProperty]
@@ -38,8 +40,7 @@ namespace ShopOnline.Areas.Identity.Pages.Account
         public class InputModel
         {
             [Required]
-            
-            public string Email { get; set; }
+            public string UserName { get; set; }
 
             [Required]
             [DataType(DataType.Password)]
@@ -74,10 +75,43 @@ namespace ShopOnline.Areas.Identity.Pages.Account
             {
                 // This doesn't count login failures towards account lockout
                 // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(Input.Email, Input.Password, Input.RememberMe, lockoutOnFailure: true);
+                var result = await _signInManager.PasswordSignInAsync(Input.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: true);
                 if (result.Succeeded)
                 {
                     _logger.LogInformation("User logged in.");
+                    var ListAdmin = await _userManager.GetUsersInRoleAsync("Admin");
+                    if(ListAdmin.Count > 0)
+                    {
+                        foreach (var item in ListAdmin)
+                        {
+                            if (item.UserName == Input.UserName)
+                            {
+                                return RedirectToAction("Index", "Home", new { area = "Admin" });
+                            }
+                        }
+                    }
+                    var ListManage = await _userManager.GetUsersInRoleAsync("Manage");
+                    if (ListManage.Count > 0)
+                    {
+                        foreach (var item in ListManage)
+                        {
+                            if (item.UserName == Input.UserName)
+                            {
+                                return RedirectToAction("Index", "Home", new { area = "Manage" });
+                            }
+                        }
+                    }
+                    //if (_signInManager.IsSignedIn(User))
+                    //{
+                    //    if(User.IsInRole("Admin"))
+                    //    {
+                    //        return RedirectToAction("Index", "Home", new { area = "Admin" });
+                    //    }
+                    //    if (User.IsInRole("Manage"))
+                    //    {
+                    //        return RedirectToAction("Index", "Home", new { area = "Manage" });
+                    //    }
+                    //}
                     return LocalRedirect(returnUrl);
                 }
                 if (result.RequiresTwoFactor)

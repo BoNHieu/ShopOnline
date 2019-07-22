@@ -1,0 +1,105 @@
+﻿@model ShopOnline.Models.ViewModel.InputViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/_Layout.cshtml";
+}
+
+@* Danh sách nhập *@
+<div class="row clearfix">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card">
+            <div class="header">
+                <form>
+                    <div class="row clearfix">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-5">
+                            <div class="form-group">
+                                <div>
+                                    <label class="text-info" style="font-size:120%;">Người nhập: @Model.Input.Name</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3">
+                            <div class="form-group">
+                                <div>
+                                    <label class="text-info pull-right" style="font-size:120%;">Ngày tạo: </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-4">
+                            <div class="form-group">
+                                <div>
+                                    <input style="font-size:130%;" asp-for="Input.DateInput" type="text" class="form-control text-info" readonly>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="form-group">
+                                <div>
+                                    <a class="btn btn-primary" asp-action="Create" asp-controller="InputInfoes" asp-route-InputId="@Model.Input.Id">Nhập thêm đơn</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-6">
+                            <div class="form-group">
+                                <div>
+                                    <a class="btn btn-success" asp-action="Index">Back to list</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <thead>
+                            <tr class="table-info">
+                                <th>
+                                    @Html.Raw("Tên sản phẩm")
+                                </th>
+                                <th>
+                                    @Html.Raw("Nhà cung cấp")
+                                </th>
+                                <th>
+                                    @Html.Raw("Số lượng")
+                                </th>
+                                <th>
+                                    @Html.Raw("Giá nhập")
+                                </th>
+                                <th>
+                                    @Html.Raw("Gía xuất")
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.inputInfos)
+                            {
+                                <tr class="table-info">
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Product.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Supplier.Name)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Count)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Inputprice)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.OutputPrice)
+                                    </td>
+                                    <td width="10%">
+                                        <a asp-action="Edit" asp-controller="InputInfoes" asp-route-id="@item.Id" asp-route-InputId="@item.InputId" class="btn btn-primary">Edit</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
